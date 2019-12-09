@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeHive</title>
+    <meta name="description" content="Clothing site">
+    <meta name="author" content="KrystalK.">
+    <link rel="stylesheet" href="css/reset.css"> <!-- You may change this "Reset" to "Normalize" if preferred -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>BeeHive</h1>
+      <!-- Site logo, replace with your own -->
+      <div class="logo"></div>
+      <img src="honey-comb.png" alt="Honey logo">
+   
+
+      
+      <!-- Navigation menu and toggle button (non-functional) -->
+      <nav aria-label="Primary">
+        <button type="button">
+          <span class="material-icons">menu</span>
+        </button>
+
+        <div class="topnav">
+            <div class="active">
+              <ul>
+                <li><a href="default.asp">Home</a></li>
+                <li><a href="new.asp">New In</a></li>
+                <li><a href="lastchance.asp">Last Chance</a></li>
+                <li><a href="sale.asp">Sale</a></li>
+              </ul>
+        </div>
+        </div>
+
+
+      <!-- Search for a product (non-functional) -->
+      <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search" name="search">
+          <button type="submit"><i class="search"></i></button>
+        </form>
+      </div>
+
+      <!-- Additional nav links -->
+
+      <ul>
+        <li><a href="#"><span class="material-icons">favorite_border</span></a></li>
+        <li><a href="#"><span class="material-icons">shopping_cart</span></a></li>
+      </ul>
+    </header>
+    <form action="">
+      <input type="number" name="qty" id="qty" value="1">
+      <button type="button">Add to cart</button>
+    </form>
+
+    <main>
+      <header>
+        <h2>Womens Outerwear</h2>
+
+        <!-- Filtering product form -->
+        <form>
+          <h4>Filters:</h4>
+          <fieldset>
+            <label for="sort">Show</label>
+            <select name="sort" id="sort">
+              <option value="price-high">Price, highest to lowest</option>
+              <option value="price-low">Price, lowest to highest</option>
+              <option value="newest">Newest releases</option>
+            </select>
+          </fieldset>
+            <fieldset>
+                <div>
+                    <label for="catSearch">Category:</label>
+                    <select name="categoryName" id="catSearch">
+                      <option value="0" disabled selected>-- Select a category --</option>
+                      <option value="design">Coats</option>
+                      <option value="development">Jackets</option>
+                    </select>
+                  </div>
+                  
+          </fieldset>
+          <fieldset>
+            <legend>Colour</legend>
+            <ul>
+              <li><input type="checkbox" name="colour" value="black" id="black"> <label for="black">Black</label></li>
+              <li><input type="checkbox" name="colour" value="white" id="white"> <label for="white">White</label></li>
+              <li><input type="checkbox" name="colour" value="grey" id="beige"> <label for="grey">Beige</label></li>
+              <li><input type="checkbox" name="colour" value="red" id="print"> <label for="red">Print</label></li>
+              <li><input type="checkbox" name="colour" value="blue" id="floral"> <label for="blue">Floral</label></li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <legend>Sizes</legend>
+            <ol>
+              <li><input type="checkbox" name="size" value="xs" id="xs"> <label for="xs">XS</label></li>
+              <li><input type="checkbox" name="size" value="sm" id="sm"> <label for="sm">S</label></li>
+              <li><input type="checkbox" name="size" value="md" id="md"> <label for="md">M</label></li>
+              <li><input type="checkbox" name="size" value="lg" id="lg"> <label for="lg">L</label></li>
+              <li><input type="checkbox" name="size" value="xl" id="xl"> <label for="xl">XL</label></li>
+            </ol>
+          </fieldset>
+          <fieldset>
+            <legend>Ratings</legend>
+            <ol>
+              <li>
+                <input type="radio" name="rating" value="4" id="aboveFour">
+                <label for="aboveFour">
+                  <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_border</span>
+                </label>
+              </li>
+              <li>
+                <input type="radio" name="rating" value="3" id="aboveThree">
+                <label for="aboveThree">
+                  <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_border</span><span class="material-icons">star_border</span>
+                </label>
+              </li>
+              <li>
+                <input type="radio" name="rating" value="2" id="aboveTwo">
+                <label for="aboveTwo">
+                  <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_border</span><span class="material-icons">star_border</span><span class="material-icons">star_border</span>
+                </label>
+              </li>
+              <li>
+                <input type="radio" name="rating" value="1" id="aboveOne">
+                <label for="aboveOne">
+                  <span class="material-icons">star</span><span class="material-icons">star_border</span><span class="material-icons">star_border</span><span class="material-icons">star_border</span><span class="material-icons">star_border</span>
+                </label>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </header>
+
+      <section>
+        <div class="results">
+        <h4>Results</h4>
+        </div>
+
+        <div id="products">
+            <main>
+                <button id="layout">Change Layout</button>
+                <section id="products" class="products"></section>
+              </main>
+          <!-- Product 1 -->
+          <article class="product">
+            <header>
+                <div class="gallery">
+                    <a target="beige" href="/jacket-1.jpg">
+                      <img src="/jacket-1.jpg" alt="beige faux fur">
+                    </a>
+                    <div class="desc">Hooded jacket with long sleeves. Front welt pockets. Side vents at hem. Front metal zip closure.</div>
+                  </div>
+            </header>
+            <h3> Faux Fur Jacket</h3>
+            
+            <form>
+              <fieldset>
+                <legend>Colours</legend>
+                <ul>
+                  <li><label><input type="radio" name="colour" value="r"> <span>Beige</span></label></li>
+                  <li><label><input type="radio" name="colour" value="w"> <span>Blush</span></label></li>
+                  <li><label><input type="radio" name="colour" value="b"> <span>Black</span></label></li>
+                </ul>
+              </fieldset>
+
+              <fieldset>
+                <legend>Sizes</legend>
+                <ol>
+                    <li><label><input type="radio" name="size" value="m"> <span>S</span></label></li>
+                  <li><label><input type="radio" name="size" value="m"> <span>M</span></label></li>
+                  <li><label><input type="radio" name="size" value="l"> <span>L</span></label></li>
+                  <li><label><input type="radio" name="size" value="xl"> <span>XL</span></label></li>
+                </ol>
+              </fieldset>
+
+              <footer>
+                <dl>
+                  <dt>Customer Rating</dt>
+                  <dd>4.4 <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_half</span></dd>
+                </dl>
+                <data value="39"><del>$50.00</del> <ins>$39.00</ins></data>
+                <button type="button"><span class="material-icons">add_shopping_cart</span> Add to Cart</button>
+                <button type="button"><span class="material-icons">favorite</span></button>
+                <a href="#">see more</a>
+              </footer>
+            </form>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product">
+            <header>
+                <div class="gallery">
+                    <a target="_blank" href="/jacket-2.jpg">
+                      <img src="/jacket-2.jpg" alt="green puffer">
+                    </a>
+                    <div class="desc">Down jacket with high collar, adjustable hood, and removable faux fur trim. Long sleeves with interior ribbed cuffs. Front zip pockets. Front metal zip closure.</div>
+                  </div>
+            </header>
+            <h3>Puffer Jacket with Faux Fur Hood</h3>
+            <form>
+              <fieldset>
+                <legend>Colours</legend>
+                <ul>
+                  <li><label><input type="radio" name="colour" value="r"> <span>Olive</span></label></li>
+                  <li><label><input type="radio" name="colour" value="w"> <span>White</span></label></li>
+                  <li><label><input type="radio" name="colour" value="b"> <span>Red</span></label></li>
+                </ul>
+              </fieldset>
+
+              <fieldset>
+                <legend>Sizes</legend>
+                <ol>
+                    <li><label><input type="radio" name="size" value="S"> <span>S</span></label></li>
+                  <li><label><input type="radio" name="size" value="M"> <span>M</span></label></li>
+                  <li><label><input type="radio" name="size" value="L"> <span>L</span></label></li>
+                  <li><label><input type="radio" name="size" value="XL"> <span>XL</span></label></li>
+                </ol>
+              </fieldset>
+
+              <footer>
+                <dl>
+                  <dt>Customer Rating</dt>
+                  <dd>4.7 <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_half</span></dd>
+                </dl>
+                <data value="55"><del>$75.00</del> <ins>$55.00</ins></data>
+                <button type="button"><span class="material-icons">add_shopping_cart</span> Add to Cart</button>
+                <button type="button"><span class="material-icons">favorite</span></button>
+                <a href="#">see more</a>
+              </footer>
+            </form>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product">
+            <header>
+                <div class="gallery">
+                    <a target="_blank" href="/jacket-3.jpg">
+                      <img src="/jacket-3.jpg" alt="tan coat">
+                    </a>
+                    <div class="desc">Coat with wide high collar and long sleeves. Front flap pockets. Removable self belt. Back vent. Front button closure. </div>
+                  </div>
+            </header>
+            <h3>Trench Coat with High Collar</h3>
+            <form>
+              <fieldset>
+                <legend>Colours</legend>
+                <ul>
+                  <li><label><input type="radio" name="colour" value="r"> <span>Tan</span></label></li>
+                  <li><label><input type="radio" name="colour" value="w"> <span>White</span></label></li>
+                </ul>
+              </fieldset>
+
+              <fieldset>
+                <legend>Sizes</legend>
+                <ol>
+                    <li><label><input type="radio" name="size" value="S"> <span>S</span></label></li>
+                  <li><label><input type="radio" name="size" value="M"> <span>M</span></label></li>
+                  <li><label><input type="radio" name="size" value="L"> <span>L</span></label></li>
+                  <li><label><input type="radio" name="size" value="XL"> <span>XL</span></label></li>
+                </ol>
+              </fieldset>
+
+              <footer>
+                <dl>
+                  <dt>Customer Rating</dt>
+                  <dd>3.7 <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_half</span></dd>
+                </dl>
+                <data value="39"><del>$63.50</del> <ins>$39.00</ins></data>
+                <button type="button"><span class="material-icons">add_shopping_cart</span> Add to Cart</button>
+                <button type="button"><span class="material-icons">favorite</span></button>
+                <a href="#">see more</a>
+              </footer>
+            </form>
+          </article>
+    
+          <!-- Product 4 -->
+          <article class="product">
+            <header>
+                <div class="gallery">
+                    <a target="_blank" href="/jacket-4.jpg">
+                      <img src="/jacket-4.jpg" alt="cheetah print">
+                    </a>
+                    <div class="desc">Faux fur coat with lapel collar and long sleeves. Front pockets. Interior lining. Front button closure.</div>
+                  </div>
+            </header>
+            <h3>Faux Fur Cheetah Print Coat</h3>
+            <form>
+              <fieldset>
+                <legend>Colours</legend>
+                <ul>
+                  <li><label><input type="radio" name="colour" value="b"> <span>Cheetah</span></label></li>
+                </ul>
+              </fieldset>
+
+              <fieldset>
+                <legend>Sizes</legend>
+                <ol>
+                    <li><label><input type="radio" name="size" value="S"> <span>S</span></label></li>
+                  <li><label><input type="radio" name="size" value="M"> <span>M</span></label></li>
+                  <li><label><input type="radio" name="size" value="L"> <span>L</span></label></li>
+                  <li><label><input type="radio" name="size" value="XL"> <span>XL</span></label></li>
+                </ol>
+              </fieldset>
+
+              <footer>
+                <dl>
+                  <dt>Rating</dt>
+                  <dd>5.0 <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_half</span></dd>
+                </dl>
+                <data value="67"><del>$90.00</del> <ins>$67.99</ins></data>
+                <button type="button"><span class="material-icons">add_shopping_cart</span> Add to Cart</button>
+                <button type="button"><span class="material-icons">favorite</span></button>
+                <a href="#">see more</a>
+              </footer>
+            </form>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product">
+            <header>
+                <div class="gallery">
+                    <a target="_blank" href="/jacket-5.jpg">
+                      <img src="/jacket-5.jpg" alt="leather jacket">
+                    </a>
+                    <div class="desc">Leather jacket with lapel collar and long sleeves. Front zip pockets. Self belt with metal buckle. Front zip closure.</div>
+                  </div>
+                  </header>
+            <h3>Faux Leather Jacket</h3>
+            <form>
+              <fieldset>
+                <legend>Colours</legend>
+                <ul>
+                  <li><label><input type="radio" name="colour" value="r"> <span>Black</span></label></li>
+                  <li><label><input type="radio" name="colour" value="w"> <span>Green</span></label></li>
+                  <li><label><input type="radio" name="colour" value="b"> <span>Blush</span></label></li>
+                </ul>
+              </fieldset>
+
+              <fieldset>
+                <legend>Sizes</legend>
+                <ol>
+                  <li><label><input type="radio" name="size" value="M"> <span>M</span></label></li>
+                  <li><label><input type="radio" name="size" value="L"> <span>L</span></label></li>
+                  <li><label><input type="radio" name="size" value="XL"> <span>XL</span></label></li>
+                </ol>
+              </fieldset>
+
+              <footer>
+                <dl>
+                  <dt>Rating</dt>
+                  <dd>3.4 <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star_half</span></dd>
+                </dl>
+                <data value="25"><del>$34.50</del> <ins>$25.00</ins></data>
+                <button type="button"><span class="material-icons">add_shopping_cart</span> Add to Cart</button>
+                <button type="button"><span class="material-icons">favorite</span></button>
+                <a href="#">see more</a>
+              </footer>
+            </form>
+          </article>
+        </div>
+      </section>
+
+    <footer>
+      <p>&copy; Copyright, 2015.</p>
+      <nav aria-label="Legal">
+        <div class="footer">
+        <ul>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Accessibility Policy</a></li>
+        </ul>
+        </div>
+      </nav>
+      <div class="social">
+      <ul>
+        <li><a href="#"><span class="material-icons">face</span> Facebook</a></li>
+        <li><a href="#"><span class="material-icons">camera_alt</span> Instagram</a></li>
+        <li><a href="#"><span class="material-icons">alternate_email</span> Twitter</a></li>
+      </ul>
+      </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
